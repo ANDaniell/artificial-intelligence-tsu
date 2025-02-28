@@ -176,7 +176,30 @@
         - Земля: 110% от медианного значения.
             
         - Стоимость жизни: коррекция на 25%.
-            
+
+```
+if __name__ == "__main__":
+    classifier = FamilyClassifier(
+        'kaggle_income.csv',
+        encoding='latin-1',
+        sep=',',
+        usecols=['City', 'Median', 'Mean', 'ALand', 'AWater']
+    )
+    
+    test_family = pd.Series({
+        'City': 'New York',
+        'Median': 85000,
+        'Mean': 95000,
+        'ALand': 1500,
+        'AWater': 200
+    })
+    
+    result = classifier.classify_family(test_family)
+    print(f"Категория семьи: {result}")
+```
+
+==Категория семьи: Средний класс==
+
 
 ---
 
